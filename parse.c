@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int parse_line(char *line, size_t line_num)
+int parse_line(char *line, size_t line_num, stack_t **stack)
 {
 	char *delims = " \t\r\n";
 	char **p_line;
@@ -11,9 +11,9 @@ int parse_line(char *line, size_t line_num)
 		{NULL, NULL}
 	};
 	instruction_t *instruct_p = instructions;
-	stack_t *stack = NULL;
+
 	p_line = strtow(line, delims);
-	/* printf("%s %s\n", p_line[0], p_line[1]); */ 
+
 	if (p_line)
 	{
 		while (instruct_p->opcode && strcmp(instruct_p->opcode, p_line[0]) != 0)
@@ -33,7 +33,7 @@ int parse_line(char *line, size_t line_num)
 				cmd.data = NULL;
 			}
 			cmd.line_number = line_num;
-			instruct_p->f(&stack, cmd);
+			instruct_p->f(stack, cmd);
 		}
 		else
 		{
@@ -41,7 +41,8 @@ int parse_line(char *line, size_t line_num)
 			exit(EXIT_FAILURE);
 		}
 	}
-	free_tow(p_line);
+	if (p_line)
+		free_tow(p_line);
 
 	return (0);
 }

@@ -2,28 +2,21 @@
 
 void push(stack_t **stack, cmd_t cmd)
 {
-		stack_t *temp;
+	stack_t *new;
 
-		if (!cmd.if_data || isnan(cmd.data))
-		{
-			fprintf(stderr, "L%lu: usage: push integer\n", cmd.line_number);
-			exit(EXIT_FAILURE);
-		}
+	if (!cmd.if_data || isnan(cmd.data))
+	{
+		fprintf(stderr, "L%lu: usage: push integer\n", cmd.line_number);
+		exit(EXIT_FAILURE);
+	}
 
-		if (*stack == NULL)
-		{
-			*stack = malloc(sizeof(stack_t));
-			(*stack)->n = atoi(cmd.data);
-			(*stack)->prev = NULL;
-			(*stack)->next = NULL;
-			return;
-		}
-		temp = *stack;
-		*stack = (*stack)->prev;
-		*stack = malloc(sizeof(stack_t));
-		(*stack)->n = atoi(cmd.data);
-		(*stack)->prev = NULL;
-		(*stack)->next = temp;
+	new = malloc(sizeof(stack_t));
+	new->next = *stack;
+	new->n = atoi(cmd.data);
+	new->prev = NULL;
+	if (*stack)
+		(*stack) -> prev = new;
+	*stack = new;
 }
 
 void pall(stack_t **stack, cmd_t cmd __attribute__((unused)))

@@ -15,6 +15,8 @@ char **strtow(char *str, const char *del)
     int x = 0;
     
     token = strtok(str, del);
+	if (!token)
+		return (NULL);
 	while (token)
 	{
 /*         printf("%s\n", token); */
@@ -35,7 +37,7 @@ char **strtow(char *str, const char *del)
 void free_tow(char **tow)
 {
 	int i = 0;
-
+	
 	while (tow[i])
 		free(tow[i++]);
 	free(tow);

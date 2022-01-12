@@ -6,6 +6,7 @@ int main(int argc, char const *argv[])
 	char *line = NULL;
 	size_t len = 0, l_num = 1;
 	ssize_t read;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -22,7 +23,7 @@ int main(int argc, char const *argv[])
 	
 	while((read = getline(&line, &len, fd)) != -1)
 	{
-		if (parse_line(line, l_num))
+		if (parse_line(line, l_num, &stack))
 			exit(EXIT_FAILURE);
 		l_num++;
 	}
