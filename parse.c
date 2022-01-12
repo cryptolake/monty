@@ -10,6 +10,9 @@ int parse_line(char *line, size_t line_num, stack_t **stack)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	instruction_t *instruct_p = instructions;
@@ -39,7 +42,7 @@ int parse_line(char *line, size_t line_num, stack_t **stack)
 		}
 		else
 		{
-			fprintf(stderr, "L%lu: unknown instruction %s", line_num, p_line[0]);
+			fprintf(stderr, "L%lu: unknown instruction %s\n", line_num, p_line[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
