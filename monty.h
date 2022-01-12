@@ -50,6 +50,13 @@ void free_tow(char **tow);
 
 void push(stack_t **stack, cmd_t cmd);
 void pall(stack_t **stack, cmd_t cmd);
+void pint(stack_t **stack, cmd_t cmd);
+void pop(stack_t **stack, cmd_t cmd);
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int isnan(char *s);
+
+stack_t *new_node(int n);
+void free_stack(stack_t *stack);
+int delete_node(stack_t **head, unsigned int index);
 #endif

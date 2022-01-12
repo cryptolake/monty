@@ -31,5 +31,7 @@ int main(int argc, char const *argv[])
 	fclose(fd);
 	if (line)
 		free(line);
+	free_stack(stack);
+
 	return (EXIT_SUCCESS);
 }

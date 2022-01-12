@@ -8,6 +8,8 @@ int parse_line(char *line, size_t line_num, stack_t **stack)
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	instruction_t *instruct_p = instructions;
