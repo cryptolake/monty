@@ -26,7 +26,7 @@ typedef struct stack_s
 * @data: data with opcode
 * @line_number: line number of the opcode
 *
-* Description: opcode struct consisting of data 
+* Description: opcode struct consisting of data
 * and line_number
 **/
 typedef struct cmd_s

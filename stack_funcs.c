@@ -28,7 +28,7 @@ void free_stack(stack_t *stack)
 {
 	stack_t *temp;
 
-	while(stack)
+	while (stack)
 	{
 		temp = stack->next;
 		free(stack);

@@ -1,5 +1,11 @@
 #include "monty.h"
-
+/**
+ *parse_line - lmm
+ *
+ *@line: pointer
+ * @line_num: num
+ * @stack: double pointer
+ */
 void parse_line(char *line, size_t line_num, stack_t **stack)
 {
 	char *delims = " \t\r\n";
@@ -18,15 +24,12 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	instruction_t *instruct_p = instructions;
 
 	p_line = strtow(line, delims);
-
 	if (p_line)
 	{
 		while (instruct_p->opcode && strcmp(instruct_p->opcode, p_line[0]) != 0)
 			instruct_p++;
-			
 		if (instruct_p->opcode)
 		{
-			/* printf("%s\n", p_line[1]); */
 			if (p_line[1] != NULL)
 				cmd.data = p_line[1];
 			else
@@ -43,5 +46,4 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	}
 	if (p_line)
 		free_tow(p_line);
-
 }

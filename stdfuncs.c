@@ -46,15 +46,15 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 **/
 int is_number(char *s)
 {
-    int i = 0;
+int i = 0;
 
-    while (s[i])
-    {
-        if (s[i] < '0' || s[i] > '9')
-		    return (1);
-        i++;
-    }
-    return (0);
+while (s[i])
+{
+if (s[i] < '0' || s[i] > '9')
+return (1);
+i++;
+}
+return (0);
 }
 
 /**
