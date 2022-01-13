@@ -1,17 +1,17 @@
 #include "monty.h"
 
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, cmd_t cmd)
 {
 	stack_t *new;
 
-	if (!data || is_number(data))
+	if (!cmd.data || is_number(cmd.data))
 	{
-		fprintf(stderr, "L%du: usage: push integer\n", line_number);
+		fprintf(stderr, "L%lu: usage: push integer\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
-	new = new_node(atoi(data));
+	new = new_node(atoi(cmd.data));
 	new->next = *stack;
 	new->prev = NULL;
 	if (*stack)
@@ -19,7 +19,7 @@ void push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
-void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void pall(stack_t **stack, cmd_t cmd __attribute__((unused)))
 {
 	stack_t *head = *stack;
 
@@ -30,7 +30,7 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 }
 
-void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, cmd_t cmd)
 {
 	stack_t *temp;
 
@@ -45,32 +45,32 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	else
 	{		
-		fprintf(stderr, "L%du: can't pop, empty stack\n", line_number);
+		fprintf(stderr, "L%lu: can't pop, empty stack\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, cmd_t cmd)
 {
 	if (*stack)
 		printf("%d\n", (*stack)->n);
 	else
 	{
-		fprintf(stderr, "L%du: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%lu: can't pint, stack empty\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, cmd_t cmd)
 {
 	stack_t *scnd;
 	int temp;
 
 	if (stack_len(*stack) < 2)
 	{
-		fprintf(stderr, "L%du: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%lu: can't swap, stack too short\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -85,14 +85,14 @@ void swap(stack_t **stack, unsigned int line_number)
 }
 
 
-void add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, cmd_t cmd)
 {
 	int sum;
 	stack_t *new;
 
 	if (stack_len(*stack) < 2)
 	{
-		fprintf(stderr, "L%du: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%lu: can't add, stack too short\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -106,6 +106,6 @@ void add(stack_t **stack, unsigned int line_number)
 	new->n = sum;
 }
 
-void nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+void nop(stack_t **stack __attribute__((unused)), cmd_t cmd __attribute__((unused)))
 {
 }

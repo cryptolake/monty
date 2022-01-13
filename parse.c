@@ -1,11 +1,10 @@
 #include "monty.h"
 
-char *data;
-
 void parse_line(char *line, size_t line_num, stack_t **stack)
 {
 	char *delims = " \t\r\n";
 	char **p_line;
+	cmd_t cmd;
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
@@ -29,11 +28,11 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 		{
 			/* printf("%s\n", p_line[1]); */
 			if (p_line[1] != NULL)
-				data = p_line[1];
-
+				cmd.data = p_line[1];
 			else
-				data = NULL;
-			instruct_p->f(stack, line_num);
+				cmd.data = NULL;
+			cmd.line_number = line_num;
+			instruct_p->f(stack, cmd);
 		}
 		else
 		{

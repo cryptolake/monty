@@ -5,7 +5,6 @@
 #include <stddef.h>
 #include <string.h>
 
-extern char *data;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -22,6 +21,19 @@ typedef struct stack_s
 		struct stack_s *next;
 } stack_t;
 
+/**
+* struct cmd_s - opcode interface
+* @data: data with opcode
+* @line_number: line number of the opcode
+*
+* Description: opcode struct consisting of data 
+* and line_number
+**/
+typedef struct cmd_s
+{
+	char *data;
+	size_t line_number;
+} cmd_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -34,20 +46,21 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 		char *opcode;
-		void (*f)(stack_t **stack, unsigned int line_number);
+		void (*f)(stack_t **stack, cmd_t cmd);
+
 } instruction_t;
 
 void parse_line(char *line, size_t line_num, stack_t **stack);
 char **strtow(char *str, const char *del);
 void free_tow(char **tow);
 
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, cmd_t cmd);
+void pall(stack_t **stack, cmd_t cmd);
+void pint(stack_t **stack, cmd_t cmd);
+void pop(stack_t **stack, cmd_t cmd);
+void swap(stack_t **stack, cmd_t cmd);
+void add(stack_t **stack, cmd_t cmd);
+void nop(stack_t **stack, cmd_t cmd);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strdup(char *str);
