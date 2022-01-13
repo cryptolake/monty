@@ -38,13 +38,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 
 /**
-* isnan - check if string a number or not
+* is_number - check if string a number or not
 *
 * @s: s
 *
 * Return: 1 not number, 0 a number
 **/
-int isnan(char *s)
+int is_number(char *s)
 {
     int i = 0;
 

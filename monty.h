@@ -51,7 +51,7 @@ void nop(stack_t **stack, unsigned int line_number);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strdup(char *str);
-int isnan(char *s);
+int is_number(char *s);
 
 stack_t *new_node(int n);
 void free_stack(stack_t *stack);

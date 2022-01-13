@@ -4,7 +4,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (!data || isnan(data))
+	if (!data || is_number(data))
 	{
 		fprintf(stderr, "L%du: usage: push integer\n", line_number);
 		free_stack(*stack);
