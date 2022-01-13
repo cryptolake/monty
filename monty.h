@@ -44,7 +44,7 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, cmd_t cmd);
 } instruction_t;
 
-int parse_line(char *line, size_t line_num, stack_t **stack);
+void parse_line(char *line, size_t line_num, stack_t **stack);
 char **strtow(char *str, const char *del);
 void free_tow(char **tow);
 

@@ -23,15 +23,14 @@ int main(int argc, char const *argv[])
 	
 	while((read = getline(&line, &len, fd)) != -1)
 	{
-		if (parse_line(line, l_num, &stack))
-			exit(EXIT_FAILURE);
+		parse_line(line, l_num, &stack);
 		l_num++;
 	}
 
 	fclose(fd);
+	free_stack(stack);
 	if (line)
 		free(line);
-	free_stack(stack);
 
 	return (EXIT_SUCCESS);
 }

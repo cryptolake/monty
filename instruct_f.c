@@ -7,6 +7,7 @@ void push(stack_t **stack, cmd_t cmd)
 	if (!cmd.if_data || isnan(cmd.data))
 	{
 		fprintf(stderr, "L%lu: usage: push integer\n", cmd.line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -45,6 +46,7 @@ void pop(stack_t **stack, cmd_t cmd)
 	else
 	{		
 		fprintf(stderr, "L%lu: can't pop, empty stack\n", cmd.line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -56,6 +58,7 @@ void pint(stack_t **stack, cmd_t cmd)
 	else
 	{
 		fprintf(stderr, "L%lu: can't pint, stack empty\n", cmd.line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -68,6 +71,7 @@ void swap(stack_t **stack, cmd_t cmd)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%lu: can't swap, stack too short\n", cmd.line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -89,6 +93,7 @@ void add(stack_t **stack, cmd_t cmd)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%lu: can't add, stack too short\n", cmd.line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 

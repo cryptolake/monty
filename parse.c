@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int parse_line(char *line, size_t line_num, stack_t **stack)
+void parse_line(char *line, size_t line_num, stack_t **stack)
 {
 	char *delims = " \t\r\n";
 	char **p_line;
@@ -31,7 +31,6 @@ int parse_line(char *line, size_t line_num, stack_t **stack)
 				cmd.if_data = 1;
 				cmd.data = p_line[1];
 			}
-
 			else
 			{
 				cmd.if_data = 0;
@@ -43,11 +42,11 @@ int parse_line(char *line, size_t line_num, stack_t **stack)
 		else
 		{
 			fprintf(stderr, "L%lu: unknown instruction %s\n", line_num, p_line[0]);
+			free_stack(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}
 	if (p_line)
 		free_tow(p_line);
 
-	return (0);
 }
