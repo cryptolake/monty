@@ -1,11 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
-#define  _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
-#include <sys/types.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -57,6 +55,7 @@ void add(stack_t **stack, cmd_t cmd);
 void nop(stack_t **stack, cmd_t cmd);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_strdup(char *str);
 int isnan(char *s);
 
 stack_t *new_node(int n);

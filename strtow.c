@@ -19,9 +19,8 @@ char **strtow(char *str, const char *del)
 		return (NULL);
 	while (token)
 	{
-/*         printf("%s\n", token); */
         words = _realloc(words, sizeof(char *) * x, sizeof(char *) * (x + 1));
-        words[x++] = strdup(token);
+        words[x++] = _strdup(token);
 		token = strtok(NULL, del);
 	}
     words = _realloc(words, sizeof(char *) * x, sizeof(char *) * (x + 1));

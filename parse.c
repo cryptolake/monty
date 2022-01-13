@@ -26,6 +26,7 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 			
 		if (instruct_p->opcode)
 		{
+			/* printf("%s\n", p_line[1]); */
 			if (p_line[1] != NULL)
 			{
 				cmd.if_data = 1;

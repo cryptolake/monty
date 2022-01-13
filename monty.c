@@ -3,9 +3,8 @@
 int main(int argc, char const *argv[])
 {
 	FILE *fd;
-	char *line = NULL;
-	size_t len = 0, l_num = 1;
-	ssize_t read;
+	char line[512];
+	size_t l_num = 1;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -21,7 +20,7 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE);
     }
 	
-	while((read = getline(&line, &len, fd)) != -1)
+	while(fgets(line, 512, fd))
 	{
 		parse_line(line, l_num, &stack);
 		l_num++;
@@ -29,8 +28,6 @@ int main(int argc, char const *argv[])
 
 	fclose(fd);
 	free_stack(stack);
-	if (line)
-		free(line);
 
 	return (EXIT_SUCCESS);
 }
