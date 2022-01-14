@@ -46,7 +46,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 **/
 int is_number(char *s)
 {
-	int i = 0;
+	int i = 1;
+
+	if (s[0] != '-' && (s[0] < '0' || s[0] > '9'))
+		return (1);
 
 	while (s[i])
 	{
@@ -69,7 +72,7 @@ char *_strdup(char *str)
 	unsigned int l, i;
 
 	if (str == NULL)
-		return (NULL);
+	return (NULL);
 
 	else
 	{
