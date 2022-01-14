@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- *main - mmm
+ *main - monty interpreter
  *
- *@argc: mmm
- *@argv: mmm
- *Return: mmm
+ *@argc: number of args to the program
+ *@argv: array of args
+ *Return: 0 success, 1 failure
  */
 int main(int argc, char const *argv[])
 {
