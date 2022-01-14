@@ -60,7 +60,7 @@ void pop(stack_t **stack, cmd_t cmd)
 
 	else
 	{
-		fprintf(stderr, "L%lu: can't pop, empty stack\n", cmd.line_number);
+		fprintf(stderr, "L%lu: can't pop an empty stack\n", cmd.line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
