@@ -14,7 +14,7 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"sub", sub}, {"nop", nop},
-		{"div", divide}, {"mul", mul}, {NULL, NULL}};
+		{"div", divide}, {"mul", mul}, {"mod", mod}, {NULL, NULL}};
 	instruction_t *instruct_p = instructions;
 
 	p_line = strtow(line, delims);
