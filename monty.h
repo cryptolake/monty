@@ -62,6 +62,7 @@ void swap(stack_t **stack, cmd_t cmd);
 void add(stack_t **stack, cmd_t cmd);
 void sub(stack_t **stack, cmd_t cmd);
 void divide(stack_t **stack, cmd_t cmd);
+void mul(stack_t **stack, cmd_t cmd);
 void nop(stack_t **stack, cmd_t cmd);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
