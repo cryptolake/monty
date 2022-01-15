@@ -18,6 +18,9 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	instruction_t *instruct_p = instructions;
 
 	p_line = strtow(line, delims);
+	if (p_line[0][0] == '#')
+		return;
+
 	if (p_line)
 	{
 		while (instruct_p->opcode && strcmp(instruct_p->opcode, p_line[0]) != 0)
