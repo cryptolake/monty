@@ -65,6 +65,7 @@ void divide(stack_t **stack, cmd_t cmd);
 void mul(stack_t **stack, cmd_t cmd);
 void nop(stack_t **stack, cmd_t cmd);
 void mod(stack_t **stack, cmd_t cmd);
+void pchar(stack_t **stack, cmd_t cmd);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strdup(char *str);

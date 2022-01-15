@@ -5,7 +5,7 @@
  *
  *@stack: stack of elements
  *@cmd: cmd
- */
+ **/
 void mod(stack_t **stack, cmd_t cmd)
 {
 	int sum;
@@ -32,4 +32,33 @@ void mod(stack_t **stack, cmd_t cmd)
 
 	delete_node(stack, 0);
 	new->n = sum;
+}
+
+
+/**
+ *pchar - prints the char at the top of the stack,
+ *followed by a new line
+ *
+ *@stack: double pointer
+ *@cmd: cmd
+ **/
+void pchar(stack_t **stack, cmd_t cmd)
+{
+	if (*stack)
+	{
+		if ((*stack)->n >= 0 && (*stack)->n <= 127)
+			printf("%c\n", (*stack)->n);
+		else
+		{
+			fprintf(stderr, "L%lu: can't pchar, value out of range\n", cmd.line_number);
+			free_stack(*stack);
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		fprintf(stderr, "L%lu: can't pchar, stack empty\n", cmd.line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 }

@@ -13,7 +13,7 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	cmd_t cmd;
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
-		{"add", add}, {"sub", sub}, {"nop", nop},
+		{"add", add}, {"sub", sub}, {"nop", nop}, {"pchar", pchar},
 		{"div", divide}, {"mul", mul}, {"mod", mod}, {NULL, NULL}};
 	instruction_t *instruct_p = instructions;
 
@@ -23,7 +23,6 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 		free_tow(p_line);
 		return;
 	}
-
 	if (p_line)
 	{
 		while (instruct_p->opcode && strcmp(instruct_p->opcode, p_line[0]) != 0)
