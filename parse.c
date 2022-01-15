@@ -18,8 +18,11 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	instruction_t *instruct_p = instructions;
 
 	p_line = strtow(line, delims);
-	if (p_line[0][0] == '#')
+	if (p_line && p_line[0][0] == '#')
+	{
+		free_tow(p_line);
 		return;
+	}
 
 	if (p_line)
 	{
