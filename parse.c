@@ -11,16 +11,9 @@ void parse_line(char *line, size_t line_num, stack_t **stack)
 	char *delims = " \t\r\n";
 	char **p_line;
 	cmd_t cmd;
-	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{NULL, NULL}
-	};
+	instruction_t instructions[] = {{"push", push},
+		{"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
+		{"add", add}, {"sub", sub}, {"nop", nop}, {NULL, NULL}};
 	instruction_t *instruct_p = instructions;
 
 	p_line = strtow(line, delims);
